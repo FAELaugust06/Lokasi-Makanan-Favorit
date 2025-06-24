@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Favorit</title>
+  <link rel="stylesheet" href="dashboard_guest.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <a href="dashboard_guest.html" class="menu-link">🏠 Home</a>
+      <hr class="separator">
+      <a href="profile.html" id="loginBtn" class="menu-link">🔐 Login</a>
+      <a href="#" onclick="logout()" class="menu-link">🔓 Logout</a>
+      <hr class="separator">
+      <div class="lokasi-dropdown">
+        <div id="lokasiBtn" class="lokasi-tombol" onclick="toggleLokasi()">📍 Lokasi</div>
+        <div id="lokasi-options" class="lokasi-options">
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p align="center"> Lokasi Makanan Favorit <a href="https://www.bsi.ac.id/ubsi/index.js">Kunjungi Situs BSI </a></p>
+    </div>  
+  </div>
+
+  <div class="main">
+    <div class="content">
+      <h1>Selamat Datang, Guest</h1>
+      <input type="text" id="searchInput" placeholder="🔍 Cari Favorit..." oninput="filterFavorit()">
+      <button id="hapus-favorit-btn" onclick="hapusSemuaFavorit()">🗑️ Hapus Semua Favorit</button>
+      <p id="hasilPencarian" style="color: red; display: none;">Hasil tidak ditemukan.</p>
+      <div id="favorit-area"></div>
+    </div>
+
+    <div class="panel-kanan">
+      <a href="daftar_makanan/menu_makanan.html" class="panel-item">🍽️ Menu Makanan & Minuman</a>
+      <div class="panel-item">
+        <span>📝 Catatan Makanan</span>
+        <div id="komentar-area" class="komentar-area"></div>
+        <div class="komentar-form">
+          <textarea id="komentarInput" placeholder="Tulis catatan makanan..." rows="3"></textarea>
+          <button onclick="kirimKomentar()">Kirim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const komentarArea = document.getElementById("komentar-area");
+    const komentarList = JSON.parse(localStorage.getItem("komentarList")) || [];
+
+    if (komentarArea) {
+      komentarArea.innerHTML = komentarList.map(k => `
+        <div class="komentar-box">
+          <small style="font-size: 11px; color: #666;">${k.waktu}</small>
+          <p>${k.isi}</p>
+        </div>
+      `).join('');
+    }
+
+    function kirimKomentar() {
+      const input = document.getElementById("komentarInput");
+      if (!input || input.value.trim() === "") return;
+
+      const newKomentar = {
+        isi: input.value,
+        waktu: new Date().toLocaleString()
+      };
+
+      let komentarList = JSON.parse(localStorage.getItem("komentarList")) || [];
+      komentarList.unshift(newKomentar);
+      if (komentarList.length > 3) komentarList.pop();
+      localStorage.setItem("komentarList", JSON.stringify(komentarList));
+
+      alert("Catatan disimpan!");
+      input.value = "";
+      location.reload();
+    }
+
+    const namaPengguna = localStorage.getItem("userNama");
+    if (namaPengguna) {
+      const btn = document.getElementById("loginBtn");
+      if (btn) btn.textContent = "👤 " + namaPengguna;
+    }
+
+    function logout() {
+      localStorage.removeItem("userNama");
+      alert("Anda telah logout.");
+      window.location.href = "profile.html";
+    }
+
+    function toggleLokasi() {
+      const lokasiBox = document.getElementById("lokasi-options");
+      lokasiBox.style.display = lokasiBox.style.display === "none" ? "block" : "none";
+    }
+
+    function pilihLokasi(nama) {
+      localStorage.setItem("lokasi", nama);
+      const lokasiBtn = document.getElementById("lokasiBtn");
+      lokasiBtn.textContent = nama;
+      document.getElementById("lokasi-options").style.display = "none";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const lokasi = localStorage.getItem("lokasi");
+      const btn = document.getElementById("lokasiBtn");
+      if (lokasi && btn) {
+        btn.textContent = lokasi;
+      }
+      tampilkanFavorit(favoritList);
+    });
+
+    let favoritList = JSON.parse(localStorage.getItem("favoritList")) || [];
+
+    function tampilkanFavorit(list) {
+      const favoritArea = document.getElementById("favorit-area");
+      favoritArea.innerHTML = "";
+
+      if (list.length === 0) {
+        favoritArea.innerHTML = "<p style='color: gray;'>Tidak ada favorit yang disimpan.</p>";
+        return;
+      }
+
+      list.forEach(item => {
+        favoritArea.innerHTML += `
+          <div class="menu-card">
+            <img src="${item.gambar}" class="menu-image">
+            <div class="menu-info">
+              <h3>${item.nama}</h3>
+              <p>${item.deskripsi}</p>
+              <div class="menu-meta">
+                <div class="stars">★★★★★</div>
+                <div class="icons">
+                  <a href="${item.lokasi}" target="_blank"><span class="icon">📍</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function filterFavorit() {
+      const query = document.getElementById("searchInput").value.toLowerCase();
+      const hasilFilter = favoritList.filter(item => item.nama.toLowerCase().includes(query));
+      tampilkanFavorit(hasilFilter);
+      document.getElementById("hasilPencarian").style.display = hasilFilter.length === 0 ? "block" : "none";
+    }
+
+    function hapusSemuaFavorit() {
+      if (confirm("Yakin ingin menghapus semua favorit?")) {
+        localStorage.removeItem("favoritList");
+        favoritList = [];
+        tampilkanFavorit(favoritList);
+      }
+    }
+  </script>
+</body>
+</html>

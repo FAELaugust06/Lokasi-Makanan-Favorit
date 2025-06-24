@@ -1,0 +1,128 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(to right, #fff6e0, #ffe1c1);
+}
+
+.sidebar .exit {
+  background-color: #c0392b;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #ff6b6b;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar button {
+  background: none;
+  border: none;
+  color: white;
+  margin: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none; /* untuk a.panel-item */
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid rgba(255,255,200,0.4);
+  margin: 8px 0;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+}
+
+h2 {
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #333;
+}
+
+.menu-button {
+  background: #fff;
+  border: 2px solid #f5b041;
+  padding: 14px 0;
+  margin: 10px 0;
+  width: 300px;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #d35400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none; /* untuk a.panel-item */
+}
+
+.menu-button:hover {
+  background-color: #fff7e6;
+  transform: translateY(-2px);
+}
+
+.menu-link {
+  display: block;
+  background: none;
+  color: white;
+  font-size: 16px;
+  margin: 10px 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu-link:hover {
+  text-decoration: none;
+}
+
+a.exit {
+  background-color: #c0392b;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+a.exit:hover {
+  background-color: #a93226;
+}
+
+.menu-link {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  margin: 10px 0;
+  display: block;
+}
+.menu-link:hover {
+  text-decoration: none;
+}
+
+#lokasiBtn {
+  background-color: #ff9f43;
+  color: white;
+  font-weight: bold;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: default;
+  text-align: left;
+  margin: 10px 0;
+}

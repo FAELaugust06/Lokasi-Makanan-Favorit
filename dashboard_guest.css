@@ -1,0 +1,267 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(to right, #fff0db, #ffe6cc);
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #ff6b6b;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar button,
+.sidebar .exit,
+.menu-link {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  display: block;
+}
+
+.menu-link:hover {
+  text-decoration: none;
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.4);
+  margin: 8px 0;
+}
+
+.lokasi-dropdown {
+  position: relative;
+  margin-top: 10px;
+}
+
+.lokasi-tombol {
+  background-color: #ff9248;
+  color: white;
+  font-weight: bold;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.2s;
+}
+
+.lokasi-tombol:hover {
+  background-color: #fb7d28;
+}
+
+.lokasi-options {
+  display: none;
+  margin-top: 6px;
+}
+
+.lokasi-options div {
+  background-color: #fffefc;
+  color: #d35400;
+  padding: 8px 12px;
+  margin-bottom: 5px;
+  border-left: 4px solid #f5b041;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.lokasi-options div:hover {
+  background-color: #fff7e6;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  padding: 30px;
+  padding-bottom: 120px;
+}
+
+.content {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content input[type="text"] {
+  width: 96%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.content h1 {
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.15);
+  font-weight: bold;
+}
+
+.panel-kanan {
+  flex: 1;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel-item {
+  background-color: #fffefc;
+  padding: 20px;
+  border-left: 6px solid #f5b041;
+  border-radius: 10px;
+  font-weight: 400;
+  color: #d35400;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-decoration: none;
+  transition: transform 0.2s;
+  font-size: 16px;
+}
+
+.panel-item:hover {
+  transform: translateY(-3px);
+  background-color: #fff7e6;
+}
+
+.menu-card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 16px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+}
+
+.menu-image {
+  width: 150px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid #f5b041;
+}
+
+.menu-info h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #d35400;
+}
+
+.menu-info p {
+  font-size: 14px;
+  color: #555;
+  margin: 6px 0 12px;
+}
+
+.stars {
+  color: gold;
+  font-size: 18px;
+}
+
+.icons {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+}
+
+.icons a {
+  text-decoration: none;
+  color: #c0392b;
+  font-size: 20px;
+  margin-left: 12px;
+}
+
+.icons a:hover {
+  color: #a93226;
+}
+
+.komentar-area {
+  margin-top: 20px;
+}
+
+.komentar-box {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #f5b041;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.komentar-box small {
+  display: block;
+  margin-bottom: 5px;
+  color: #888;
+}
+
+.komentar-form {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.komentar-form textarea {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fffefc;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.komentar-form button {
+  padding: 10px 16px;
+  background-color: #f5b041;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.komentar-form button:hover {
+  background-color: #e67e22;
+}
+
+#hapus-favorit-btn {
+  margin-top: 15px;
+  padding: 12px 20px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#hapus-favorit-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Makanan Berat</title>
+  <link rel="stylesheet" href="makanan_berat.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <a href="../dashboard_guest.html" class="menu-link">🏠 Home</a>
+      <hr class="separator">
+      <a href="../profile.html" id="loginBtn" class="menu-link">🔐 Login</a>
+      <hr class="separator">
+      <div id="lokasiBtn" class="lokasi-tombol">📍 Lokasi</div>
+    </div>
+    <a href="menu_makanan.html" class="exit">Kembali</a>
+  </div>
+
+  <div class="main">
+    <div class="container">
+      <h2>Makanan Ringan</h2>
+
+      <div class="menu-card">
+        <img src="KopKen.png" alt="Lazatto" class="menu-image">
+        <div class="menu-info">
+          <h3>Nusantara</h3>
+          <p>Ini kopi bukan sembarang kopi, ini kopi yang bisa buat kalian mengingat semua kenangan manis dan pait mantan kalian tergantung kopi yang di pesan. HAHAH.</p>
+          <div class="menu-meta">
+            <div class="stars">★★★★★</div>
+            <div class="icons">
+              <a href="#" onclick='simpanFavorit({
+                gambar: "KopKen.png",
+                nama: "Kopi Kenangan",
+                deskripsi: "Ini kopi bukan sembarang kopi, ini kopi yang bisa buat kalian mengingat semua kenangan manis dan pait mantan kalian tergantung kopi yang di pesan. HAHAH",
+                lokasi: "https://maps.app.goo.gl/GN6pp5FUjtDeYNCcA"
+              })' title="Favorit"><span class="icon">❤️</span></a>
+              <a href="https://maps.app.goo.gl/GN6pp5FUjtDeYNCcA" target="_blank" title="Lihat di Maps"><span class="icon">📍</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="Wedrink.png" alt="Donat Susu" class="menu-image">
+        <div class="menu-info">
+          <h3>Wedrink</h3>
+          <p>Jadikanlah ini tempat berkumpul organisasi selain harganya murah rasanya juga enak bangettt. Apalagi yang es krim Matcha, Matca ciw?</p>
+          <div class="menu-meta">
+            <div class="stars">★★★★★</div>
+            <div class="icons">
+              <a href="#" onclick='simpanFavorit({
+                gambar: "Wedrink.png",
+                nama: "Wedrink",
+                deskripsi: "Jadikanlah ini tempat berkumpul organisasi selain harganya murah rasanya juga enak bangettt. Apalagi yang es krim Matcha, Matca ciw?",
+                lokasi: "https://maps.app.goo.gl/duYfgyakyBijCfj16"
+              })' title="Favorit"><span class="icon">❤️</span></a>
+              <a href="https://maps.app.goo.gl/duYfgyakyBijCfj16" target="_blank" title="Lihat di Maps"><span class="icon">📍</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="Mixue.png" alt="Donat Susu" class="menu-image">
+        <div class="menu-info">
+          <h3>Mixue</h3>
+          <p>Sumpah kalo malem tempatnya estetik parahh, wajib kesini minimal sekali seumur hidup. Lumayan buat velocity mahh.</p>
+          <div class="menu-meta">
+            <div class="stars">★★★★★</div>
+            <div class="icons">
+              <a href="#" onclick='simpanFavorit({
+                gambar: "Mixue.png",
+                nama: "Mixue",
+                deskripsi: "Sumpah kalo malem tempatnya estetik parahh, wajib kesini minimal sekali seumur hidup. Lumayan buat velocity mahh",
+                lokasi: "https://maps.app.goo.gl/mcVzmWVvWqbVaCBr8"
+              })' title="Favorit"><span class="icon">❤️</span></a>
+              <a href="https://maps.app.goo.gl/mcVzmWVvWqbVaCBr8" target="_blank" title="Lihat di Maps"><span class="icon">📍</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function simpanFavorit(data) {
+      let favoritList = JSON.parse(localStorage.getItem("favoritList")) || [];
+      favoritList.push(data);
+      localStorage.setItem("favoritList", JSON.stringify(favoritList));
+      alert("Data tersimpan!");
+      window.location.href = "../dashboard_favorit.html";
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const nama = localStorage.getItem("userNama");
+      const btn = document.getElementById("loginBtn");
+      if (nama && btn) btn.textContent = "👤 " + nama;
+
+      const lokasi = localStorage.getItem("lokasiUser");
+      const lokasiBtn = document.getElementById("lokasiBtn");
+      if (lokasi && lokasiBtn) lokasiBtn.textContent = lokasi;
+    });
+
+    window.addEventListener("DOMContentLoaded", function () {
+      const lokasi = localStorage.getItem("lokasi");
+      const lokasiBtn = document.getElementById("lokasiBtn");
+      if (lokasi && lokasiBtn) {lokasiBtn.textContent = lokasi;
+      }
+     });
+  </script>
+</body>
+</html>

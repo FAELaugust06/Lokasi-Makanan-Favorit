@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Pengguna</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <h2>Isi Biodata Anda</h2>
+  <form onsubmit="simpanProfil(); return false;">
+    <label for="nama">Nama Lengkap:</label><br>
+    <input type="text" id="nama" required><br><br>
+    <button type="submit">Simpan</button>
+  </form>
+
+  <script>
+    function simpanProfil() {
+      const nama = document.getElementById('nama').value;
+      localStorage.setItem('userNama', nama);
+      alert('Profil disimpan!');
+      window.location.href = 'dashboard_guest.html';
+    }
+  </script>
+</body>
+</html>
