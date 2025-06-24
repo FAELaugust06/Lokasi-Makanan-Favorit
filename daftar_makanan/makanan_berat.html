@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Makanan Berat</title>
+  <link rel="stylesheet" href="makanan_berat.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <a href="../index.html" class="menu-link">🏠 Home</a>
+      <hr class="separator">
+      <a href="../profile.html" id="loginBtn" class="menu-link">🔐 Login</a>
+      <hr class="separator">
+      <div id="lokasiBtn" class="lokasi-tombol">📍 Lokasi</div>
+    </div>
+    <a href="menu_makanan.html" class="exit">Kembali</a>
+  </div>
+
+  <div class="main">
+    <div class="container">
+      <h2>Makanan Berat</h2>
+
+      <div class="menu-card">
+        <img src="Richeese.png" alt="Nasi Goreng" class="menu-image">
+        <div class="menu-info">
+          <h3>Richeese Faactory</h3>
+          <p>Makanan olahan ayam dengan harga yang murah, apalagi jika di beli paketan. Murah untuk sekarang gak tau nanti mah jalur minyak dunia aja di tutup Iran</p>
+          <div class="menu-meta">
+            <div class="stars">★★★★★</div>
+            <div class="icons">
+              <a href="#" onclick='simpanFavorit({
+                gambar: "Richeese.png",
+                nama: "Richeese Factory",
+                deskripsi: "Makanan olahan ayam dengan harga yang murah, apalagi jika di beli paketan. Murah untuk sekarang gak tau nanti mah jalur minyak dunia aja di tutup Iran",
+                lokasi: "https://maps.app.goo.gl/PdV8TY1wkJeTtGms8"
+              })' title="Favorit"><span class="icon">❤️</span></a>
+              <a href="https://maps.app.goo.gl/PdV8TY1wkJeTtGms8" target="_blank" title="Lihat di Maps"><span class="icon">📍</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="DBakso.png" alt="Nasi Goreng" class="menu-image">
+        <div class="menu-info">
+          <h3>D'Bakso</h3>
+          <p>Rayakan semua kebersamaan di suasana dingin dengan makan makanan yang berkuah hangat, bakso pertama membuat pala mu bergeleng.</p>
+          <div class="menu-meta">
+            <div class="stars">★★★★★</div>
+            <div class="icons">
+              <a href="#" onclick='simpanFavorit({
+                gambar: "DBakso.png",
+                nama: "D Bakso",
+                deskripsi: "Rayakan semua kebersamaan di suasana dingin dengan makan makanan yang berkuah hangat, bakso pertama membuat pala mu bergeleng..",
+                lokasi: "https://maps.app.goo.gl/BpNjqZCckmpWeJ3E9"
+              })' title="Favorit"><span class="icon">❤️</span></a>
+              <a href="https://maps.app.goo.gl/BpNjqZCckmpWeJ3E9" target="_blank" title="Lihat di Maps"><span class="icon">📍</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="MieGacoan.png" alt="Nasi Goreng" class="menu-image">
+        <div class="menu-info">
+          <h3>Mie Gacoan Cikampek</h3>
+          <p>Nggak ada makanan yang pedes selain Mie Gacoan Level 8, masa iya gak ada minumannya jelas banyak juga ada makanan ringannya lagii. huhu.</p>
+          <div class="menu-meta">
+            <div class="stars">★★★★★</div>
+            <div class="icons">
+              <a href="#" onclick='simpanFavorit({
+                gambar: "MieGacoan.png",
+                nama: "Mie Gacoan Cikampek",
+                deskripsi: "Nggak ada makanan yang pedes selain Mie Gacoan Level 8, masa iya gak ada minumannya jelas banyak juga ada makanan ringannya lagii. huhu.",
+                lokasi: "https://maps.app.goo.gl/HAJEraXSWvmdcAKp9"
+              })' title="Favorit"><span class="icon">❤️</span></a>
+              <a href="https://maps.app.goo.gl/HAJEraXSWvmdcAKp9" target="_blank" title="Lihat di Maps"><span class="icon">📍</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <script>
+    function simpanFavorit(data) {
+      let favoritList = JSON.parse(localStorage.getItem("favoritList")) || [];
+      favoritList.push(data);
+      localStorage.setItem("favoritList", JSON.stringify(favoritList));
+      alert("Data tersimpan!");
+      window.location.href = "../dashboard_favorit.html";
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const nama = localStorage.getItem("userNama");
+      const btn = document.getElementById("loginBtn");
+      if (nama && btn) btn.textContent = "👤 " + nama;
+
+      const lokasi = localStorage.getItem("lokasiUser");
+      const lokasiBtn = document.getElementById("lokasiBtn");
+      if (lokasi && lokasiBtn) lokasiBtn.textContent = lokasi;
+    });
+
+    window.addEventListener("DOMContentLoaded", function () {
+      const lokasi = localStorage.getItem("lokasi");
+      const lokasiBtn = document.getElementById("lokasiBtn");
+      if (lokasi && lokasiBtn) {lokasiBtn.textContent = lokasi;
+      }
+     });
+  </script>
+</body>
+</html>

@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pilih Menu</title>
+  <link rel="stylesheet" href="menu_makanan.css" />
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <a href="../index.html" class="menu-link">🏠 Home</a>
+      <hr class="separator">
+      <a href="profile.html" id="loginBtn" class="menu-link">🔐 Login</a>
+      <hr class="separator">
+      <div id="lokasiBtn" class="lokasi-tombol">📍 Lokasi</div>
 
+    </div>
+    <a href="../dashboard_guest.html" class="exit">Kembali</a>
+  </div>
+  <div class="main">
+    <h2>Tentukan apa yang Anda mau?</h2>
+    <a href="makanan_berat.html" class="menu-button">🍛 Makanan Berat</a>
+    <a href="makanan_ringan.html" class="menu-button">🍟 Makanan Ringan</a>
+    <a href="minuman.html" class="menu-button">🧃 Minuman Dingin</a>
+  </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      const lokasi = localStorage.getItem("lokasi");
+      const lokasiBtn = document.getElementById("lokasiBtn");
+      if (lokasi && lokasiBtn) {
+      lokasiBtn.textContent = lokasi;
+      } 
+
+      // Ambil data user login
+      const namaPengguna = localStorage.getItem("userNama");
+      const btn = document.getElementById("loginBtn");
+      if (namaPengguna && btn) {
+        btn.textContent = "👤 " + namaPengguna;
+      }
+    });
+  </script>
+
+
+
+</body>
+</html>
